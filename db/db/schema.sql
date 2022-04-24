@@ -16,6 +16,7 @@ CREATE TABLE role (
     salary INT NOT NULL,
 )
 
+/*I think the manager line has to accept null here because the managers don't have managers themselves*/
 CREATE TABLE employees(
     id INT NOT NULL,
     first_name VARCHAR(30) NOT NULL,
@@ -23,6 +24,6 @@ CREATE TABLE employees(
     job_title VARCHAR (70) NOT NULL,
     department VARCHAR (50) NOT NULL,
     salary INT NOT NULL,
-    manager VARCHAR (70) NOT NULL, 
+    manager VARCHAR (70)  
 )
 
