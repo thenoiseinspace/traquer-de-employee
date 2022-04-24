@@ -83,5 +83,33 @@ function mainMenuQuestions(){
         }
     }
  )
+}
 
+//Creating each function called above
+function displayDepartments(){
+
+}
+
+function displayRoles(){
+
+}
+
+function displayEmployees(){
+
+}
+
+function createDepartment(){
+
+}
+
+function createRole(){
+
+}
+
+function createEmployee(){
+
+}
+
+function modifyEmployee(){
+    
 }
