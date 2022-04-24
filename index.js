@@ -1,6 +1,6 @@
 //Setting up imports, links and requirements
 
-const { prompt } = require("inquirer");
+const { prompt, createPromptModule } = require("inquirer");
 const db = require("./db/db");
 require("console.table");
 
@@ -51,10 +51,37 @@ function mainMenuQuestions(){
             name: 'Update employee role',
             value: 'updateEmployee'
           },
-
         ]
-
-
      }
-    ])
+     //now we take the user's choice and run a switch case statement to give them differnet options based on what they selected
+
+    ]).then(res =>{
+        let choice = res.choice; 
+        switch (choice){
+            case "totalDepartmentlist":
+                //running the appropriate function for each case
+                displayDepartments(); 
+                break; 
+            case "totalRolesList":
+                displayRoles(); 
+                break; 
+            case "totalEmployeesList":
+                displayEmployees(); 
+                break; 
+            case "addDepartment":
+                createDepartment();
+                break;
+            case "addRole":
+                createRole();
+                break;
+            case "addEmployee":
+                createEmployee();
+                break;
+            case "updateEmployee":
+                modifyEmployee();
+                break;
+        }
+    }
+ )
+
 }
