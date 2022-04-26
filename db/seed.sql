@@ -3,7 +3,7 @@
 /*this links the database created in schema*/
 use employees; 
 
-INSERT INTO department
+INSERT INTO departments
     (id, name)
 VALUES
     (1, "Transfiguration"),
@@ -14,7 +14,7 @@ VALUES
     (6, "Administration");
 
 INSERT INTO role
-    (id, job-title, salary, department-id)
+    (id, job_title, salary, department_id)
 VALUES
     ("Professor", 1, 70000, 1),
     ("Headmaster", 2, 100000, 6),
@@ -26,4 +26,4 @@ INSERT INTO employee
 VALUES
     (1, "Minerva", "McGonagall", 1, 2), 
     (2, "Gilderoy", "Lockhart", 3, 1),
-    (3, "Albus", "Dumbledore", 2, null),
+    (3, "Albus", "Dumbledore", 2, null); 

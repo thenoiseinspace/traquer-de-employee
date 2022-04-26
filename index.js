@@ -78,15 +78,27 @@ function mainMenuQuestions(){
 
 //Create a formatted table showing department names and department ids
 function displayDepartments(){
-
+    const result = 'SELECT * FROM departments'
+    sqlConnect.query(result, (err, res) => {
+        console.table(res);
+        mainMenuQuestions();
+      });
 }
 
 function displayRoles(){
-
+    const result = 'SELECT * FROM role'
+    sqlConnect.query(result, (err, res) =>{
+        console.table(res); 
+        mainMenuQuestions; 
+    })
 }
 
 function displayEmployees(){
-
+    const result = 'SELECT * FROM employees'
+    sqlConnect.query(result, (err, res) =>{
+        console.table(res); 
+        mainMenuQuestions; 
+    })
 }
 
 function createDepartment(){
