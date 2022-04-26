@@ -1,19 +1,8 @@
 //Setting up imports, links and requirements
 
-const { prompt, createPromptModule } = require("inquirer");
-const db = require("./db/db");
-require("console.table");
-
-// init();
-
-// // Display logo text, load main prompts
-// function init() {
-//   const logoText = logo({ name: "Employee Manager" }).render();
-
-//   console.log(logoText);
-
-//   loadMainPrompts();
-// }
+const { prompt } = require("inquirer");
+const db = require("./db");
+// require("console.table");
 
 //Setting up prompts using Inquirer 
 function mainMenuQuestions(){
@@ -86,6 +75,8 @@ function mainMenuQuestions(){
 }
 
 //Creating each function called above
+
+//Create a formatted table showing department names and department ids
 function displayDepartments(){
 
 }
@@ -111,5 +102,13 @@ function createEmployee(){
 }
 
 function modifyEmployee(){
-    
+
 }
+
+// // Display main menu questions
+function init() {
+    mainMenuQuestions();
+  }
+  
+  //calling the function
+  init();
