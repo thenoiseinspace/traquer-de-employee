@@ -112,17 +112,21 @@ function createDepartment(){
     // db.generateDepartment()
     prompt([
         {
-        name: "name", 
-        message: "Enter department name"
-        },
-        {
-        name: "dept_id", 
-        message: "Enter department id"
-        }
+            name: "id", 
+            message: "Enter department id"
+            },
+            {
+            name: "name", 
+            message: "Enter department name"
+            },
     ])
     .then(res => {
-        let name = res; 
-        db.createDepartment(name)
+        let newDepartment = {
+          id: res.id, 
+          name: res.name,   
+        } 
+        console.log(newDepartment)
+        db.generateDepartment(newDepartment)
             .then(() => console.log ("The department has been added."))
             .then(() => mainMenuQuestions())
     })

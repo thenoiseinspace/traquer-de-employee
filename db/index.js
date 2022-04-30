@@ -40,9 +40,24 @@ class DB {
   ////////////////////////////
 
   //Pulling this format from activity 7
-  generateDepartment(){
+  generateDepartment(newDepartment){
+    // const sqlQuery = `INSERT INTO department (name) VALUES (?);`;
+    // DB.query(sqlQuery, [departmentName], (err, response) => {
+    //   if (err) {
+    //     console.log(err);
+    //     return;
+    //   } else {
+    //     // console.log(`Added ${departmentName} to the database`);
+        
+    //   }
+    // } )
+    
     return this.connection.promise().query(
-      "INSERT INTO department (id, name) VALUES ();"
+     "INSERT INTO department SET  ? ;", [newDepartment], (err, response) => {
+       if (err) {
+         console.log(err)
+       }
+     }
     );
   }
 
