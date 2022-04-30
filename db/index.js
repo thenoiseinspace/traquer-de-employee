@@ -40,6 +40,7 @@ class DB {
   ////////////////////////////
 
   //Pulling this format from activity 7
+  //
   generateDepartment(newDepartment){
     return this.connection.promise().query(
      "INSERT INTO department SET  ? ;", [newDepartment], (err, response) => {
@@ -60,9 +61,13 @@ class DB {
     );
   }
 
-  generateEmployee(){
+  generateEmployee(newEmployee){
     return this.connection.promise().query(
-      "INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES ();"
+      "INSERT INTO employee SET ? ;", [newEmployee], (err, response) => {
+        if (err) {
+          console.log(err)
+        }
+      }
     );
   }
 

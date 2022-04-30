@@ -3,7 +3,7 @@
 const { prompt } = require("inquirer");
 const { title } = require("process");
 const db = require("./db");
-// require("console.table");
+
 
 //Setting up prompts using Inquirer
 function mainMenuQuestions() {
@@ -175,24 +175,35 @@ function createRole() {
 function createEmployee() {
   prompt([
     {
-      name: "first-name",
+        name: "id",
+        message: "Enter the employee's id",
+    },
+    {
+      name: "firstName",
       message: "Enter the employee's first name",
     },
     {
-      name: "last-name",
+      name: "lastName",
       message: "Enter the employee's last name",
     },
     {
-      name: "employee-role",
-      message: "Enter the employee's role",
+      name: "employeeRole",
+      message: "Enter the ID of the employee's role",
     },
     {
-      name: "employee-manager",
-      message: "Enter the employee's manager",
+      name: "employeeManager",
+      message: "Enter the ID of the employee's manager",
     },
-  ]).then((res) => {
-    let newEmployee = res;
-    db.createDepartment(newEmployee)
+]).then((res) => {
+    let newEmployee = {
+      id: res.id,
+      first_name: res.firstName,
+      last_name: res.lastName,
+      role_id: res.employeeRole,
+      manager_id: res.employeeManager, 
+    };
+    console.log(newEmployee);
+    db.generateEmployee(newEmployee)
       .then(() => console.log("The employee has been added."))
       .then(() => mainMenuQuestions());
   });
