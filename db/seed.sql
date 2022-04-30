@@ -3,7 +3,7 @@
 /*this links the database created in schema*/
 use employees; 
 
-INSERT INTO departments
+INSERT INTO department
     (id, name)
 VALUES
     (1, "Transfiguration"),
