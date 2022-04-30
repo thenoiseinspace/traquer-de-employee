@@ -41,17 +41,6 @@ class DB {
 
   //Pulling this format from activity 7
   generateDepartment(newDepartment){
-    // const sqlQuery = `INSERT INTO department (name) VALUES (?);`;
-    // DB.query(sqlQuery, [departmentName], (err, response) => {
-    //   if (err) {
-    //     console.log(err);
-    //     return;
-    //   } else {
-    //     // console.log(`Added ${departmentName} to the database`);
-        
-    //   }
-    // } )
-    
     return this.connection.promise().query(
      "INSERT INTO department SET  ? ;", [newDepartment], (err, response) => {
        if (err) {
@@ -61,9 +50,13 @@ class DB {
     );
   }
 
-  generateRole(){
+  generateRole(newRole){
     return this.connection.promise().query(
-      "INSERT INTO role (id, job_title, salary, department_id) VALUES ();"
+      "INSERT INTO role SET ? ;", [newRole], (err, response) => {
+        if (err) {
+          console.log(err)
+        }
+      }
     );
   }
 
@@ -78,78 +71,14 @@ class DB {
   //The "modify" option//
   ///////////////////////
 
-  updateEmployee(){
-    return this.connection.promise().query(
-
-    );
+  updateEmployee(employeeInfo){
+    console.log(employeeInfo)
+      return this.connection.promise().query(
+        // `SELECT * FROM employee WHERE id = ${employeeInfo.id};`
+        `UPDATE employee SET employee.role_id = ${employeeInfo.role} WHERE id = ${employeeInfo.id}`
+      );
   }
 
-
-
-  // // Find all employees except the given employee id
-  // findAllPossibleManagers(employeeId) {
-  //   return this.connection.promise().query(
-  //     "SELECT id, first_name, last_name FROM employee WHERE id != ?",
-  //     employeeId
-  //   );
-  // }
-
-  // // Create a new employee
-  // createEmployee(employee) {
-  //   return this.connection.promise().query("INSERT INTO employee SET ?", employee);
-  // }
-
-  // // Update the given employee's role
-  // updateEmployeeRole(employeeId, roleId) {
-  //   return this.connection.promise().query(
-  //     "UPDATE employee SET role_id = ? WHERE id = ?",
-  //     [roleId, employeeId]
-  //   );
-  // }
-
-  // // Update the given employee's manager
-  // updateEmployeeManager(employeeId, managerId) {
-  //   return this.connection.promise().query(
-  //     "UPDATE employee SET manager_id = ? WHERE id = ?",
-  //     [managerId, employeeId]
-  //   );
-  // }
-
-  // // Find all roles, join with departments to display the department name
-  // //Choose the id (column 1) and job title (column 2) from the role table, and the name (column 3) from the department table, but label the column 3 "department." In the fourth column, pull the salary from the role table. Connect the two tables by linking the department id in the roles table to the id column in the department table. This will output a thing that looks like a new table but is not, and though it is displaying, it is not storing as a table, it is similar to console.log. 
-  // // displayRoles() {
-  // //   return this.connection.promise().query(
-  // //     "SELECT role.id, role.job_title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
-  // //   );
-  // // }
-
-  
-
-  // // Create a new role
-  // createRole(role) {
-  //   return this.connection.promise().query("INSERT INTO role SET ?", role);
-  // }
-
-  // // Create a new department
-  // createDepartment(department) {
-  //   return this.connection.promise().query("INSERT INTO department SET ?", department);
-  // }
-
-  // // Find all employees in a given department, join with roles to display role titles
-  // findAllEmployeesByDepartment(departmentId) {
-  //   return this.connection.promise().query(
-  //     "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department.id WHERE department.id = ?;",
-  //     departmentId
-  //   );
-  // }
-
-  // // Find all employees by manager, join with departments and roles to display titles and department names
-  // findAllEmployeesByManager(managerId) {
-  //   return this.connection.promise().query(
-  //     "SELECT employee.id, employee.first_name, employee.last_name, department.name AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
-  //     managerId
-  //   );
-  // }
 }
 
 module.exports = new DB(connection);
