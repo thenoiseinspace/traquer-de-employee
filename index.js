@@ -53,10 +53,10 @@ function mainMenuQuestions(){
                 //return
                 break; 
             case "totalRolesList":
-                displayRoles(); 
+                showRoles(); 
                 break; 
             case "totalEmployeesList":
-                displayEmployees(); 
+                showEmployees(); 
                 break; 
             case "addDepartment":
                 createDepartment();
@@ -86,33 +86,38 @@ function showDepartments() {
       console.table(departments);
     })
     .then(() => mainMenuQuestions());
-    // sqlConnect.query(result, (err, res) => {
-    //     console.table(res);
-    //     mainMenuQuestions();
-    //   });
 }
 
-function displayRoles(){
-    // const result = 'SELECT * FROM role'
-    // sqlConnect.query(result, (err, res) =>{
-    //     console.table(res); 
-    //     mainMenuQuestions; 
-    // })
+function showRoles(){
+    db.displayRoles()
+    .then(([rows]) => {
+      let roles = rows;
+      console.log("\n");
+      console.table(roles);
+    })
+    .then(() => mainMenuQuestions());
 }
 
-function displayEmployees(){
-    // const result = 'SELECT * FROM employees'
-    // sqlConnect.query(result, (err, res) =>{
-    //     console.table(res); 
-    //     mainMenuQuestions; 
-    // })
+function showEmployees(){
+    db.displayEmployees()
+    .then(([rows]) => {
+      let roles = rows;
+      console.log("\n");
+      console.table(roles);
+    })
+    .then(() => mainMenuQuestions());
 }
 
 function createDepartment(){
+    // db.generateDepartment()
     prompt([
         {
         name: "name", 
         message: "Enter department name"
+        },
+        {
+        name: "dept_id", 
+        message: "Enter department id"
         }
     ])
     .then(res => {
