@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS employees;
 CREATE DATABASE employees; 
 USE employees;
 
-CREATE TABLE departments (
+CREATE TABLE department (
     id INT NOT NULL PRIMARY KEY, 
     name VARCHAR(70) NOT NULL
 ); 
@@ -16,7 +16,7 @@ CREATE TABLE role (
     department_id INT NOT NULL
 ); 
 
-/*I think the manager line has to accept null here because the managers don't have managers themselves*/
+/*The manager line has to accept null here because the managers don't have managers themselves*/
 CREATE TABLE employee (
     id INT NOT NULL PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,

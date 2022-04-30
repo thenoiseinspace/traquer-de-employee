@@ -16,10 +16,10 @@ VALUES
 INSERT INTO role
     (id, job_title, salary, department_id)
 VALUES
-    ("Professor", 1, 70000, 1),
-    ("Headmaster", 2, 100000, 6),
-    ("Custodian", 3, 25000, 3),
-    ("Gamekeeper", 4, 45000, 4);
+    (1, "Professor", 70000, 1),
+    (2, "Headmaster", 100000, 6),
+    (3, "Custodian", 25000, 3),
+    (4, "Gamekeeper", 45000, 4);
 
 INSERT INTO employee
     (id, first_name, last_name, role_id, manager_id)
